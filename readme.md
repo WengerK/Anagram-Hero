@@ -8,12 +8,7 @@ Required tools
 NodeJS
 ExpressJS
 MongoDB
-
-Install dependencies for the server by executing
-
-```shell
-npm install
-```
+Bower
 
 ## Starting Server Side
 
@@ -25,6 +20,11 @@ The Server will provide :
 
     Authentication (whitout password) - using username
         To save hightscores and list them
+
+### Install dependencies for the server by executing
+```shell
+npm install
+```
 
 ### Run the server DB app
 
@@ -65,7 +65,12 @@ curl localhost:3000/words
 
 ## Starting Client Side
 
-##Generate SASS Files via GulpJS
+### Install dependencies for the client by executing
+```shell
+bower install
+```
+
+### Generate SASS Files via GulpJS
 
 1. Installing GulpJS
 ```sh
