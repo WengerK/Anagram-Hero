@@ -1,10 +1,4 @@
-var express      = require('express');
-// var path         = require('path');
-// var favicon      = require('serve-favicon');
-// var logger       = require('morgan');
-// var cookieParser = require('cookie-parser');
-
-
+var express  = require('express');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/anagram_hero', function(err) {
     if(err) {
@@ -15,7 +9,7 @@ mongoose.connect('mongodb://localhost/anagram_hero', function(err) {
 });
 
 var users = require('./routes/users');
-// var users = require('./routes/users');
+var words = require('./routes/words');
 
 var app = express();
 
@@ -26,8 +20,8 @@ app.use(function(req, res, next) {
     next();
 });
 
-// app.use('/', routes);
 app.use('/users', users);
+app.use('/words', words);
 
 var server = app.listen(3000, function () {
     var host = server.address().address;

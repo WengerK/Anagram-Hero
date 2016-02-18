@@ -56,12 +56,25 @@ supervisor app.js
 
 ### Test API
 
-curl localhost:3000/users
-curl --data "name=value1" http://localhost:3000/users
+```shell
+# get list all accounts
+curl localhost:3000/users/list
 
+# add account into db
+curl --data "name=sudei" http://localhost:3000/users
+
+# get or add account into db
 curl localhost:3000/users/sudei
 
+# list words
 curl localhost:3000/words
+
+# seed words
+curl --data "" http://localhost:3000/words
+
+# get random word
+curl localhost:3000/words/random
+```
 
 ## Starting Client Side
 

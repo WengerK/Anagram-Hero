@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({
     name       : String,
-    hightscore : String,
+    highscore  : String,
     updated_at : { type: Date, default: Date.now },
 });
 
