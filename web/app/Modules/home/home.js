@@ -16,6 +16,5 @@ angular.module('anagram_hero.home', [
 }])
 
 .controller('HomeCtrl', ['$scope', 'AuthService', function($scope, AuthService) {
-    console.log(AuthService.getUser());
-
+    $scope.user = AuthService.getUser();
 }]);
