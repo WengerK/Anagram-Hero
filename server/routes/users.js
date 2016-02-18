@@ -13,7 +13,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/list', function(req, res, next) {
     User.find(function (err, users) {
         if (err) return next(err);
         res.json(users);

@@ -10,7 +10,10 @@ angular.module('anagram_hero', [
 'anagram_hero.footer',
 
 // Modules Pages
+'anagram_hero.api',
 'anagram_hero.home',
+'anagram_hero.authentication',
+'anagram_hero.authentication.services',
 
 ]).
 config(['$routeProvider', function($routeProvider) {
@@ -18,16 +21,24 @@ config(['$routeProvider', function($routeProvider) {
 }])
 
 .controller('AppCtrl', ['$scope', '$location', /*'$state', 'stateParams',*/ function( $scope, $location/*, $state, $stateParams*/ ) {
+
 }])
 
 
-.run(['$location', '$rootScope', function($location, $rootScope) {
+.run(['$location', '$rootScope', 'AuthService', function($location, $rootScope, AuthService) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         if (current.hasOwnProperty('$$route')) {
             $rootScope.title = current.$$route.title + ' | Anagram Hero';
             $rootScope.description = current.$$route.description;
         }
     });
+
+    $rootScope.$on('$routeChangeStart', function (event, next) {
+        if(next.authenticated && !AuthService.isLoggedin()){
+            $location.path("/login");
+        }
+    });
+
 }]);
 
 if ("ontouchstart" in document.documentElement) {

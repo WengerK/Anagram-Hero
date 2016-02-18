@@ -8,12 +8,14 @@ angular.module('anagram_hero.home', [
 ])
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/home', {
-        templateUrl: 'Modules/home/home.html',
-        controller: 'HomeCtrl',
-        title: 'Home',
+        templateUrl  : 'Modules/home/home.html',
+        controller   : 'HomeCtrl',
+        title        : 'Home',
+        authenticated: true
     });
 }])
 
-.controller('HomeCtrl', ['$scope', function($scope) {
+.controller('HomeCtrl', ['$scope', 'AuthService', function($scope, AuthService) {
+    console.log(AuthService.getUser());
 
 }]);
