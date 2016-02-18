@@ -66,6 +66,9 @@ curl --data "name=sudei" http://localhost:3000/users
 # get or add account into db
 curl localhost:3000/users/sudei
 
+# update highscore of given user
+curl -X PUT --data "highscore=22" http://localhost:3000/users/highscore/sudei
+
 # list words
 curl localhost:3000/words
 
