@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="anagram_hero" ng-controller="AppCtrl">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- SEO -->
+        <title ng-bind="title">Anagram Hero</title>
+        <meta name="description" content="">
+
+        <!-- FACEBOOK -->
+        <meta property="og:title" content="Anagram Hero"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="http://localhost/assets/img/seo/facebook.jpg"/>
+        <meta property="og:url" content="http://localhost"/>
+        <meta property="og:description" content=""/>
+
+        <!-- TWITTER -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:url" content="http://localhost">
+        <meta name="twitter:creator" content="@WengerK">
+        <meta name="twitter:title" content="Anagram Hero">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image:src" content="http://localhost/assets/img/seo/twitter.jpg">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap  -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+        <!-- Global CSS -->
+        <link rel="stylesheet" href="assets/css/app.css">
+
+    </head>
+
+    <body>
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div>
+        <div id="view-container" ng-view class="" resize></div>
+        <div ng-controller="FooterCtrl">
+            <footer></footer>
+        </div>
+    </div>
+
+    <!-- AngularJS -->
+    <!-- TODO : In production use minimified version: -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+
+    <!-- i18n -->
+
+    <!-- Application -->
+    <script src="app.js"></script>
+    <script src="Modules/API/API.js"></script>
+    <script src="Modules/home/home.js"></script>
+
+    <!-- jQuery -->
+    <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
+
+    <!-- Layout - Footer -->
+    <script src="Modules/layout/footer/footer.js"></script>
+
+    </body>
+</html>
