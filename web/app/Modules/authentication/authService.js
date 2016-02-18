@@ -10,15 +10,15 @@ angular.module('anagram_hero.authentication.services', [])
         var logged  = false;
 
         authService.login = function (credentials) {
-            var response = AuthApi.query({
+            var user = AuthApi.query({
                 name: credentials.name,
             }, function(){
-                if( typeof response[0] !== "undefined" ) {
-                    authService.setUser(response[0]);
+                if( typeof user !== "undefined" ) {
+                    authService.setUser(user);
                     logged = true;
                 }
             });
-            return response;
+            return user;
         }
 
         authService.isLoggedin = function () {

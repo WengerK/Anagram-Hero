@@ -11,7 +11,7 @@ angular.module('anagram_hero.api', [
 .factory('AuthApi', ['$resource',
     function($resource){
         return $resource('http://localhost:port/users/:name', {port: ':3000'}, {
-            query: {method:'GET', params:{}, isArray:true}
+            query: {method:'GET', params:{}, isArray:false}
         });
     }
 ])
