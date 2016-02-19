@@ -16,4 +16,12 @@ angular.module('anagram_hero.api', [
     }
 ])
 
+.factory('WordApi', ['$resource',
+    function($resource){
+        return $resource('http://localhost:port/words/random', {port: ':3000'}, {
+            query: {method:'GET', params:{}, isArray:false}
+        });
+    }
+])
+
 ;

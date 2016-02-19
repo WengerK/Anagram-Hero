@@ -14,6 +14,8 @@ angular.module('anagram_hero', [
 'anagram_hero.home',
 'anagram_hero.authentication',
 'anagram_hero.authentication.services',
+'anagram_hero.game',
+'anagram_hero.game.anagram_service',
 
 ]).
 config(['$routeProvider', function($routeProvider) {

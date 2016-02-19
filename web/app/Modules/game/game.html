@@ -1,0 +1,27 @@
+<div class="container page-container">
+    <div class="game--page">
+
+        <div class="game--wrapper">
+            <div class="game--board">
+                <div class="game--board--suffled-word">{{ currentWord.shuffle }}</div>
+                <div class="game--board--timer"><timer /></div>
+                <div class="game--board--score">{{ user.score }} PTS</div>
+            </div>
+            <div class="game--form">
+                <form novalidate>
+                    <div class="game--form--input-word">
+                        <input ng-keyup="checkGuess($event)" type="text" ng-model="guess" />
+                    </div>
+                    <div class="game--form--input-send">
+                        <input type="submit" ng-click="checkWord(guess)" value="Go" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="highscore">{{ user.highscore }}</div>
+
+    </div>
+</div>
+<div class>{{ words.length }}</div>
+<div class>{{ score }}</div>
