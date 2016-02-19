@@ -24,4 +24,12 @@ angular.module('anagram_hero.api', [
     }
 ])
 
+.factory('SaveScoreApi', ['$resource',
+    function($resource){
+        return $resource('http://localhost:port/users/highscore/:name', {port: ':3000'}, {
+            update: {method:'PUT', params:{}}
+        });
+    }
+])
+
 ;

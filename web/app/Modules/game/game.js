@@ -12,50 +12,64 @@ var game = angular.module('anagram_hero.game', [
     });
 }])
 
-.controller('GameCtrl', ['$rootScope', '$scope', 'AuthService', 'AnagramService', function($rootScope, $scope, AuthService, AnagramService) {
+.controller('GameCtrl', ['$rootScope', '$scope', 'AuthService', 'AnagramService', function($rootScope, $scope, AuthService, AnagramService, SaveScoreApi) {
     $scope.user = AuthService.getUser();
-    $scope.timer = 40; // Time for the game in seconds
-    $scope.words = new Array();
-    $scope.guess = '';
-    $scope.currentWord = {};
+    $scope.game_words = AnagramService.words;
+    $scope.game_score = 0;
 
-    $scope.score = 0;
-    $scope.guess_last_length = 0;
-
-    AnagramService.getWord().$promise.then(function(word) {
-        $scope.words.push(word);
-        $scope.currentWord = word;
-        $scope.score = parseInt($scope.currentWord.highscore);
-
-        gameInit();
-    });
+    $scope.round_guess = '';
+    $scope.round_word = {};
+    $scope.round_score = 0;
+    $scope.round_guess_last_length = 0;
 
     $scope.checkGuess = function(event) {
         // Remember the last size to calcule how many char has been erase
-        if( $scope.guess_last_length > $scope.guess.length ){
-            if( event.keyCode == 8 && $scope.score > 0 ){
-                $scope.score -= $scope.guess_last_length - $scope.guess.length;
+        if( $scope.round_guess_last_length > $scope.round_guess.length ){
+            if( event.keyCode == 8 && $scope.round_score > 0 ){
+                $scope.round_score -= $scope.round_guess_last_length - $scope.round_guess.length;
             }
         }
         // Update the last size
-        $scope.guess_last_length = $scope.guess.length;
+        $scope.round_guess_last_length = $scope.round_guess.length;
     };
 
     $scope.checkWord = function(guess) {
-        if( guess === $scope.currentWord.name ){
+        if( guess === $scope.round_word.name ){
             console.log('greate');
+            $rootScope.$emit("times-stop", {});
+
+            $scope.game_score += $scope.round_score;
+            AnagramService.saveScore($scope.user.name, $scope.game_score);
+            roundInit();
         }else{
             console.log('bad');
         }
     };
 
      $rootScope.$on('times-up', function() {
-
+         console.log('times-up');
      });
 
      var gameInit = function(){
          // Init game animations
-         $rootScope.$emit("times-start", {});
+         roundInit();
      }
+
+     var roundInit = function(){
+         $scope.round_guess = '';
+         $scope.round_word = {};
+         $scope.round_score = 0;
+         $scope.round_guess_last_length = 0;
+
+         AnagramService.getWord().$promise.then(function(word) {
+             AnagramService.words.push(word);
+             $scope.round_word = word;
+             $scope.round_score = parseInt($scope.round_word.highscore);
+
+             $rootScope.$emit("times-start", {});
+         });
+     }
+
+     gameInit();
 
 }]);
