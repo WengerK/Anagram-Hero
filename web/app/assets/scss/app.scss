@@ -1,5 +1,15 @@
+@import './mixins/_font.scss';
+@include font-face('Roboto-Black', '../fonts/Roboto-Black');
+
 @import '../../Modules/layout/footer/footer.scss';
 
 
 @import '../../Modules/home/home.scss';
 @import '../../Modules/authentication/authentication.scss';
+
+
+
+html,
+body{
+    font-family: 'Roboto-Black';
+}
