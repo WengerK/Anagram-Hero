@@ -1,19 +1,43 @@
 <div class="container page-container">
-    <div class="game--page">
+    <div class="game--page col-xs-12">
+        <div class="game--round-score">
+            {{ round.score }}
+        </div>
+        <div class="game--game-words">
+            {{ game_words.length }}
+        </div>
 
         <div class="game--wrapper">
-            <div class="game--board">
-                <div class="game--board--suffled-word">{{ round.word.shuffle }}</div>
-                <div class="game--board--timer"><timer /></div>
-                <div class="game--board--score">{{ user.score }} PTS</div>
+            <div class="game--board row">
+                <div class="col-xs-8">
+                    <div class="inner--shuffled-word">
+                        <div class="game--board--shuffled-word">{{ round.word.shuffle }}</div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="game--board--timer">
+                        <div class="timer">
+                            <timer />
+                        </div>
+                    </div>
+                    <div class="game--board--score">
+                        <div class="score">
+                            {{ game_score }} PTS
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="game--form">
-                <form novalidate>
-                    <div class="game--form--input-word">
-                        <input ng-keydown="(authorizeValue($event))" ng-keyup="checkGuess($event)" type="text" ng-model="guess" />
+                <form novalidate class="row">
+                    <div class="col-xs-8">
+                        <div class="game--form--input-word">
+                            <input ng-keydown="(authorizeValue($event))" ng-keyup="checkGuess($event)" type="text" ng-model="guess" />
+                        </div>
                     </div>
-                    <div class="game--form--input-send">
-                        <input type="submit" ng-click="checkWord(guess)" value="Go" />
+                    <div class="col-xs-4">
+                        <div class="game--form--input-send">
+                            <input type="submit" ng-click="checkWord(guess)" value="Go" />
+                        </div>
                     </div>
                 </form>
             </div>
@@ -23,6 +47,3 @@
 
     </div>
 </div>
-<div class>{{ round.score }}</div>
-<div class>{{ game_score }}</div>
-<div class>{{ game_words.length }}</div>

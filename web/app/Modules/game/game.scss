@@ -1,0 +1,111 @@
+.game--page{
+    position: relative;
+
+    .game--round-score{
+        top: 30%;
+        position: fixed;
+        /* height: 20px; */
+        left: 25%;
+        padding: 10px 20px;
+        border-radius: 20px;
+        background-color: $round_score_background;
+        border: 2px solid black
+    }
+    .game--game-words{
+        top: 30%;
+        position: fixed;
+        /* height: 20px; */
+        right: 25%;
+        padding: 10px 20px;
+        border-radius: 20px;
+        background-color: $game_words_background;
+        border: 2px solid black
+    }
+
+    .game--wrapper{
+        margin: auto;
+        width: 50%;
+        max-height: 450px;
+        border: 2px solid black;
+        @include vh-align(fixed);
+
+        .col-xs-8{
+            padding-right: 0;
+        }
+        .col-xs-4{
+            padding-left: 0;
+        }
+
+        .game--board{
+            .inner--shuffled-word{
+                height: 150px;
+                background-color: $shuffled_word_background;
+                border-right: 2px solid black;
+
+                .game--board--shuffled-word{
+                    font-size: 20px;
+                    letter-spacing: 10px;
+                    text-transform: uppercase;
+                    @include vertical-align(absolute);
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+            .game--board--timer{
+                background-color: $timer_background;
+                height: 75px;
+                position: relative;
+                border-bottom: 2px solid black;
+
+                .timer{
+                    @include vh-align(absolute);
+                }
+            }
+            .game--board--score{
+                background-color: $score_background;
+                height: 75px;
+                position: relative;
+
+                .score{
+                    @include vertical-align(absolute);
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+        .game--form{
+            .game--form--input-word,
+            .game--form--input-send{
+                border-top: 2px solid black;
+
+                input{
+                    width: 100%;
+                    background: none;
+                    border: 0;
+                    height: 40px;
+                    outline: none;
+                }
+            }
+
+            .game--form--input-word{
+                border-right: 2px solid black;
+
+                input{
+                    background-color: white;
+                    padding: 20px;
+                    text-transform: uppercase;
+                    letter-spacing: 10px;
+                }
+            }
+
+            .game--form--input-send{
+                input{
+                    background-color: $button_background;
+                }
+            }
+        }
+
+
+
+    }
+}
