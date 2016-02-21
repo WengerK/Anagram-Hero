@@ -14,11 +14,10 @@ angular.module('anagram_hero', [
 'anagram_hero.home',
 'anagram_hero.authentication',
 'anagram_hero.authentication.services',
-'anagram_hero.game',
-'anagram_hero.game.anagram_service',
+'anagram_hero.game'
+])
 
-]).
-config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/home'});
 }])
 

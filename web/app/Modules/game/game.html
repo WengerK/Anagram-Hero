@@ -3,17 +3,17 @@
 
         <div class="game--wrapper">
             <div class="game--board">
-                <div class="game--board--suffled-word">{{ round_word.shuffle }}</div>
+                <div class="game--board--suffled-word">{{ round.word.shuffle }}</div>
                 <div class="game--board--timer"><timer /></div>
                 <div class="game--board--score">{{ user.score }} PTS</div>
             </div>
             <div class="game--form">
                 <form novalidate>
                     <div class="game--form--input-word">
-                        <input ng-keyup="checkGuess($event)" type="text" ng-model="round_guess" />
+                        <input ng-keydown="(authorizeValue($event))" ng-keyup="checkGuess($event)" type="text" ng-model="guess" />
                     </div>
                     <div class="game--form--input-send">
-                        <input type="submit" ng-click="checkWord(round_guess)" value="Go" />
+                        <input type="submit" ng-click="checkWord(guess)" value="Go" />
                     </div>
                 </form>
             </div>
@@ -23,6 +23,6 @@
 
     </div>
 </div>
-<div class>{{ round_score }}</div>
+<div class>{{ round.score }}</div>
 <div class>{{ game_score }}</div>
 <div class>{{ game_words.length }}</div>

@@ -26,3 +26,5 @@ angular.module('anagram_hero.game.anagram_service', [])
         return anagramService;
     }
 ])
+
+;

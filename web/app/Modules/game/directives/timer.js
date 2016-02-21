@@ -9,12 +9,14 @@ game.directive('timer', function() {
             // Initial value for counter
             $scope.counter = 5;
             var stopped;
+            var running = false
 
             //timeout function
             //1000 milliseconds = 1 second
             //Every second counts
             $scope.countdown = function() {
                 stopped = $timeout(function() {
+                    running = true;
                     if( $scope.counter > 0 ){
                         $scope.counter--;
                         $scope.countdown();
@@ -27,10 +29,13 @@ game.directive('timer', function() {
 
             $scope.stop = function(){
                 $timeout.cancel(stopped);
+                running = false;
             }
 
             $rootScope.$on('times-start', function() {
-                $scope.countdown();
+                if( !running ){
+                    $scope.countdown();
+                }
             });
 
             $rootScope.$on('times-stop', function() {

@@ -2,6 +2,8 @@
 
 var game = angular.module('anagram_hero.game', [
     'ngRoute',
+    'anagram_hero.game.round_service',
+    'anagram_hero.game.anagram_service'
 ])
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/game', {
@@ -12,64 +14,57 @@ var game = angular.module('anagram_hero.game', [
     });
 }])
 
-.controller('GameCtrl', ['$rootScope', '$scope', 'AuthService', 'AnagramService', function($rootScope, $scope, AuthService, AnagramService, SaveScoreApi) {
+.controller('GameCtrl', ['$rootScope', '$scope', 'AuthService', 'AnagramService', 'RoundService', function($rootScope, $scope, AuthService, AnagramService, RoundService) {
     $scope.user = AuthService.getUser();
     $scope.game_words = AnagramService.words;
     $scope.game_score = 0;
 
-    $scope.round_guess = '';
-    $scope.round_word = {};
-    $scope.round_score = 0;
-    $scope.round_guess_last_length = 0;
+    $scope.guess = '';
+    $scope.round = {};
+    $scope.running = false;
 
-    $scope.checkGuess = function(event) {
-        // Remember the last size to calcule how many char has been erase
-        if( $scope.round_guess_last_length > $scope.round_guess.length ){
-            if( event.keyCode == 8 && $scope.round_score > 0 ){
-                $scope.round_score -= $scope.round_guess_last_length - $scope.round_guess.length;
-            }
+    // Check the pressed value is autorhized by the game
+    $scope.authorizeValue = function(event) {
+        if( $scope.running === true ){
+            RoundService.authorize(event);
+        }else{
+            event.preventDefault();
         }
-        // Update the last size
-        $scope.round_guess_last_length = $scope.round_guess.length;
     };
 
-    $scope.checkWord = function(guess) {
-        if( guess === $scope.round_word.name ){
-            console.log('greate');
-            $rootScope.$emit("times-stop", {});
+    // Check the user entry to calculate score
+    $scope.checkGuess = function(event) {
+        if( $scope.running === true ){
+            $scope.round = RoundService.score($scope.guess, event);
+        }
+    };
 
-            $scope.game_score += $scope.round_score;
-            AnagramService.saveScore($scope.user.name, $scope.game_score);
-            roundInit();
+    // Check user submit to calculate game score and init new round
+    $scope.checkWord = function(guess) {
+        var isvalid = RoundService.check($scope.guess);
+        if( isvalid && $scope.running === true ){
+            $scope.game_score += $scope.round.score;
+            RoundService.init().$promise.then(function(word) {
+                $scope.guess = '';
+                $scope.round = RoundService.get();
+            });
         }else{
-            console.log('bad');
+
         }
     };
 
      $rootScope.$on('times-up', function() {
+         $scope.running = false;
          console.log('times-up');
      });
 
      var gameInit = function(){
          // Init game animations
-         roundInit();
-     }
-
-     var roundInit = function(){
-         $scope.round_guess = '';
-         $scope.round_word = {};
-         $scope.round_score = 0;
-         $scope.round_guess_last_length = 0;
-
-         AnagramService.getWord().$promise.then(function(word) {
-             AnagramService.words.push(word);
-             $scope.round_word = word;
-             $scope.round_score = parseInt($scope.round_word.highscore);
-
-             $rootScope.$emit("times-start", {});
+         RoundService.init().$promise.then(function(word) {
+             $scope.round = RoundService.get();
+             $scope.running = true;
          });
      }
 
      gameInit();
-
 }]);
