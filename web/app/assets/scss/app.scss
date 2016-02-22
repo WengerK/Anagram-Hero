@@ -2,6 +2,7 @@
 
 @import './mixins/_font.scss';
 @import './mixins/_align.scss';
+@import './mixins/_animations.scss';
 
 @include font-face('Roboto-Black', '../fonts/Roboto-Black');
 

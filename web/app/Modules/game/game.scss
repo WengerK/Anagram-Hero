@@ -59,6 +59,16 @@
 
                 .timer{
                     @include vh-align(absolute);
+
+                    .minutes,
+                    .dotes,
+                    .seconds{
+                        display: inline-block;
+                    }
+                    .dotes{
+                        animation: blink-animation 0.5s steps(5, start) infinite;
+                        -webkit-animation: blink-animation 0.5s steps(5, start) infinite;
+                    }
                 }
             }
             .game--board--score{

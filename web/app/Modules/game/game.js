@@ -3,7 +3,8 @@
 var game = angular.module('anagram_hero.game', [
     'ngRoute',
     'anagram_hero.game.round_service',
-    'anagram_hero.game.anagram_service'
+    'anagram_hero.game.anagram_service',
+    'anagram_hero.game.filters'
 ])
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/game', {
