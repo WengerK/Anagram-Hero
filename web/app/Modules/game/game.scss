@@ -11,6 +11,20 @@
         background-color: $round_score_background;
         border: 2px solid black
     }
+    .game--round-lose-points{
+        .lose-point{
+            top: 30%;
+            position: fixed;
+            /* height: 20px; */
+            left: 31%;
+            color: red;
+            padding: 5px 7px;
+            border-radius: 15px;
+            background-color: white;
+            font-size: 10px;
+            border: 2px solid black
+        }
+    }
     .game--game-words{
         top: 30%;
         position: fixed;
@@ -111,6 +125,8 @@
             .game--form--input-send{
                 input{
                     background-color: $button_background;
+                    font-size: 14px;
+                    text-transform: uppercase;
                 }
             }
         }

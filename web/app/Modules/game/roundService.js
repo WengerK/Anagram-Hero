@@ -40,12 +40,19 @@ angular.module('anagram_hero.game.round_service', [])
          roundService.score = function(searched, event){
              // Remember the last size to calcule how many char has been erase
              if( guess_last_length > searched.length ){
-                 // Don't use the backspace or delete key press because of 
+                 // Don't use the backspace or delete key press because of
                  // Use selecte texte and rewrite over it should also decrease score
-                 score -= guess_last_length - searched.length;
+                 var lose = guess_last_length - searched.length;
+                 score -= lose;
+
+                 // Animate the losing point
+                 var div = angular.element('<div class="lose-point">-'+lose+'</div>');
+                 $('.game--round-lose-points').append(div);
+                 $(div).transition({ opacity: 0, y: 20 });
+
                  // Adjuste to zero if user key the delete pressed down
                  if( score < 0 ){
-                     score = 0
+                     score = 0;
                  }
              }
              // Update the last size
