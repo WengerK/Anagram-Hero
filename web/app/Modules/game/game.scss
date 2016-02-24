@@ -50,6 +50,11 @@
             padding-left: 0;
         }
 
+        &.shake{
+            animation: shake 0.3s;
+            -webkit-animation: shake 0.3s;
+        }
+
         .game--board{
             .inner--shuffled-word{
                 height: 150px;

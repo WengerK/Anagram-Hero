@@ -45,12 +45,25 @@ var game = angular.module('anagram_hero.game', [
         var isvalid = RoundService.check($scope.guess);
         if( isvalid && $scope.running === true ){
             $scope.game_score += $scope.round.score;
+
+            // Animate the losing point
+            var div = angular.element('<div class="lose-point">-'+$scope.game_score+'</div>');
+            $('.game--round-lose-points').append(div);
+            $(div).transition({ opacity: 0, y: 20 }, function(){
+                // Remove element when animation is finished
+                this.remove()
+            });
+
             RoundService.init().$promise.then(function(word) {
                 $scope.guess = '';
                 $scope.round = RoundService.get();
             });
         }else{
-
+             // Error animation
+             $('.game--wrapper').addClass('shake');
+             setTimeout(function() {
+                 $('.game--wrapper').removeClass("shake");
+             }, 800);
         }
     };
 

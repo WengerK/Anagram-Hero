@@ -48,7 +48,10 @@ angular.module('anagram_hero.game.round_service', [])
                  // Animate the losing point
                  var div = angular.element('<div class="lose-point">-'+lose+'</div>');
                  $('.game--round-lose-points').append(div);
-                 $(div).transition({ opacity: 0, y: 20 });
+                 $(div).transition({ opacity: 0, y: 20 }, function(){
+                     // Remove element when animation is finished
+                     this.remove()
+                 });
 
                  // Adjuste to zero if user key the delete pressed down
                  if( score < 0 ){
@@ -63,12 +66,9 @@ angular.module('anagram_hero.game.round_service', [])
 
          roundService.check = function(searched){
              if( searched === word.name ){
-                 console.log('greate');
                  $rootScope.$emit("times-stop", {});
                  return true;
              }
-
-             console.log('bad');
              return false;
         }
 
