@@ -32,6 +32,13 @@ npm install
 mongod
 ```
 
+### Seed the database
+Run the app's seeder with the following command:
+
+```shell
+node seed.js
+```
+
 ### Run the server app
 Run the app with the following command:
 
@@ -71,9 +78,6 @@ curl -X PUT --data "highscore=22" http://localhost:3000/users/highscore/sudei
 
 # list words
 curl localhost:3000/words
-
-# seed words
-curl --data "" http://localhost:3000/words
 
 # get random word
 curl localhost:3000/words/random

@@ -3,7 +3,6 @@ var router = express.Router();
 
 var mongoose  = require('mongoose');
 var Word      = require('../models/Word.js');
-var seedWords = require('../seed/words');
 
 /* GET words listing. */
 router.get('/', function(req, res, next) {
@@ -11,11 +10,6 @@ router.get('/', function(req, res, next) {
         if (err) return next(err);
         res.json(words);
     });
-});
-
-/* POST words to seed the database. */
-router.post('/', function(req, res, next) {
-    seedWords.seed();
 });
 
 /* GET word */
