@@ -48,27 +48,23 @@ var game = angular.module('anagram_hero.game', [
 
             // Generate the winning points
             var round_score_parts = splitNumber($scope.round.score);
-            console.log(round_score_parts);
-            // var win_points = new Array();
 
             // Destination point for each winning points
             var dest = $('.game--page .game--wrapper .game--board .game--board--score').offset();
-            console.log(dest);
 
             angular.forEach(round_score_parts, function(round_score_part, key) {
                 var div = angular.element('<div class="win-point">+'+round_score_part+'</div>');
-                // win_points.push(div);
                 $('.game--round-win-points').append(div);
 
+                // Calculate a random position in percent to place the win-point
                 var x = Math.floor(Math.random() * 60) + 20;
                 var y = Math.floor(Math.random() * 60) + 20;
-
                 $(div).css({left:y+'%',top:x+'%', scale: 0});
+
+                // Save the origin of this point for moving it to the dest point later
                 var origin = $(div).offset();
 
-
                 $(div).transition({ scale: 1.3, opacity: 1, delay: key * 250 }, 200).delay(450).transition({ opacity: 0, x: dest.left - origin.left, y: dest.top - origin.top}, 500, 'cubic-bezier(.47,.2,.31,.54)', function(){
-                    console.log('end');
                     $('.game--board--score .score').transition({ scale: 1.3 }, 100).transition({ scale: 1 }, 100);
                     // Remove element when animation is finished
                     this.remove()
