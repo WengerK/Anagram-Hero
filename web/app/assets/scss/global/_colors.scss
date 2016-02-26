@@ -3,14 +3,21 @@ $rose: #f7b7d2;
 $violet: #a783b3;
 $turquoise: #aadbd5;
 $yellow: #FDF69E;
+$red: red;
+$green: green;
 
 /*- BACKGROUNDS COLORS -*/
 $primary_background: $light-blue;
 
-/*- GAME COLORS -*/
+/*- GAME BOARD COLORS -*/
 $shuffled_word_background: white;
 $timer_background: $rose;
 $score_background: white;
 $button_background: $violet;
 $round_score_background: $yellow;
 $game_words_background: $turquoise;
+
+/*- GAME SCORE COLORS -*/
+
+$game_lose_point: $violet;
+$game_win_point: $turquoise;
