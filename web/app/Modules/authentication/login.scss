@@ -49,7 +49,7 @@
         .hello--text{
             background: #fff;
             @include vh-align(absolute);
-            width: 70%;
+            width: 80%;
             border: 2px solid black;
             text-align: center;
             padding: 27px;
@@ -66,6 +66,11 @@
         border: 2px solid black;
         @include vh-align(fixed);
         top: 70%;
+
+        &.shake{
+            animation: shake 0.3s;
+            -webkit-animation: shake 0.3s;
+        }
 
         .col-xs-8,
         .col-xs-4{

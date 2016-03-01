@@ -17,13 +17,25 @@ angular.module('anagram_hero.authentication', [
 
     $scope.check = function(user) {
         // Animate the arrow button
-        $('.authentication--login--page .login--form--wrapper .login--form .login--form--input-send button .value').transition({ left: '100%', opacity: 0 }, 300, 'cubic-bezier(.65,.01,.72,.22)', function(){
-            $(this).css({left: 0}).transition({ left: '50%', delay: 400, opacity: 1}, 300, 'cubic-bezier(.65,.01,.72,.22)', function(){
-                var result = AuthService.login(user).$promise.then(function(resp) {
-                    if( AuthService.isLoggedin() ){
-                        $window.location.href = '#home';
-                    }
-                });
+        $('.authentication--login--page .login--form--wrapper .login--form .login--form--input-send button .value').transition({ left: '100%', opacity: 0 }, 150, 'cubic-bezier(.65,.01,.72,.22)', function(){
+            $(this).css({left: 0}).transition({ left: '50%', delay: 50, opacity: 1}, 150, 'cubic-bezier(.65,.01,.72,.22)', function(){
+
+                // Check name is correct
+                if( typeof user.name === 'undefined' || user.name == ''){
+                    // Error animation
+                    $('.authentication--login--page .login--form--wrapper').addClass('shake');
+                    setTimeout(function() {
+                        $('.authentication--login--page .login--form--wrapper').removeClass("shake");
+                    }, 800);
+                }else{
+
+                    // Send username to create/load account
+                    var result = AuthService.login(user).$promise.then(function(resp) {
+                        if( AuthService.isLoggedin() ){
+                            $window.location.href = '#home';
+                        }
+                    });
+                }
             });
         });
 
