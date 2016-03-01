@@ -2,8 +2,8 @@
 
 angular.module('anagram_hero.authentication.services', [])
 
-.factory('AuthService', ['AuthApi',
-    function(AuthApi){
+.factory('AuthService', ['AuthApi', '$cookieStore',
+    function(AuthApi, $cookieStore){
 
         var savedData   = {}
         var authService = {};
@@ -22,10 +22,17 @@ angular.module('anagram_hero.authentication.services', [])
         }
 
         authService.isLoggedin = function () {
+
+            if( logged == false && typeof $cookieStore.get('user') !== 'undefined' ){
+                logged = true;
+                authService.setUser($cookieStore.get('user'));
+            }
+
             return logged;
         }
 
         authService.setUser = function(data) {
+            $cookieStore.put('user', data);
             savedData = data;
         }
         authService.getUser = function() {

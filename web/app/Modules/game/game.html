@@ -13,6 +13,14 @@
             {{ game_words.length }}
         </div>
 
+        <div class="timeout--wrapper">
+            <div class="timeout--board row">
+                <div class="col-xs-8"><div class="left-background"></div></div>
+                <div class="col-xs-4"><div class="right-background"></div></div>
+            </div>
+            <div class="timeout-text">time out !</div>
+        </div>
+
         <div class="game--wrapper">
             <div class="game--board row">
                 <div class="col-xs-8">
@@ -33,8 +41,8 @@
                     </div>
                 </div>
             </div>
-            <div class="game--form">
-                <form novalidate class="row">
+            <div class="game--form row">
+                <form novalidate>
                     <div class="col-xs-8">
                         <div class="game--form--input-word">
                             <input ng-keydown="(authorizeValue($event))" ng-keyup="checkGuess($event)" type="text" ng-model="guess" />
@@ -47,6 +55,10 @@
                     </div>
                 </form>
             </div>
+        </div>
+
+        <div class="controls--wrapper">
+            <a href="#game" ng-click="reloadRoute()" class="controls--control controls--replay">Play Again <i class="fa fa-refresh"></i></a>
         </div>
 
         <div class="highscore">{{ user.highscore }}</div>

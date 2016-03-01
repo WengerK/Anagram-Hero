@@ -11,11 +11,11 @@ var game = angular.module('anagram_hero.game', [
         templateUrl  : 'Modules/game/game.html',
         controller   : 'GameCtrl',
         title        : 'Game',
-        authenticated: false
+        authenticated: true
     });
 }])
 
-.controller('GameCtrl', ['$rootScope', '$scope', 'AuthService', 'AnagramService', 'RoundService', function($rootScope, $scope, AuthService, AnagramService, RoundService) {
+.controller('GameCtrl', ['$rootScope', '$scope', '$window', 'AuthService', 'AnagramService', 'RoundService', function($rootScope, $scope, $window, AuthService, AnagramService, RoundService) {
     $scope.user = AuthService.getUser();
     $scope.game_words = AnagramService.words;
     $scope.game_score = 0;
@@ -23,6 +23,11 @@ var game = angular.module('anagram_hero.game', [
     $scope.guess = '';
     $scope.round = {};
     $scope.running = false;
+
+    $scope.reloadRoute = function() {
+        // console.log($window.location);
+       $window.location.reload();
+    }
 
     // Check the pressed value is autorhized by the game
     $scope.authorizeValue = function(event) {
@@ -85,10 +90,28 @@ var game = angular.module('anagram_hero.game', [
         }
     };
 
-     $rootScope.$on('times-up', function() {
-         $scope.running = false;
-         console.log('times-up');
-     });
+    // When Times up
+    $rootScope.$on('times-up', function() {
+        $scope.running = false;
+
+        // Show the wrapper timeout
+        $('.game--page .timeout--wrapper').css({display: 'block'});
+
+        // Show the wrapper controls
+        $('.game--page .controls--wrapper').css({display: 'block'});
+
+        // Animate the left cartridge
+        $('.game--page .timeout--wrapper .timeout--board .left-background').transition({ left: 0 }, 300, 'cubic-bezier(.65,.01,.72,.22)').transition({ left: '-20%' }, 300, 'cubic-bezier(0,1,.5,1.3)').transition({ left: 0 }, 150).transition({ left: '-5%' }, 300, 'cubic-bezier(0,1,.5,1.3)').transition({ left: 0 }, 50);
+
+        // Animate the right cartridge
+        $('.game--page .timeout--wrapper .timeout--board .right-background').transition({ right: 0 }, 300, 'cubic-bezier(.65,.01,.72,.22)').transition({ right: '-20%' }, 300, 'cubic-bezier(0,1,.5,1.3)').transition({ right: 0 }, 150).transition({ right: '-5%' }, 300, 'cubic-bezier(0,1,.5,1.3)').transition({ right: 0 }, 50);
+
+        // Display the timeout text
+        $('.game--page .timeout--wrapper .timeout-text').transition({ delay: 1000, opacity: 1 }, 200);
+
+        // Display the replay control
+        $('.game--page .controls--wrapper .controls--replay').transition({ delay: 1000, opacity: 1 }, 200);
+    });
 
      var gameInit = function(){
          // Init game animations
