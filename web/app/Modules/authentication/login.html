@@ -1,8 +1,32 @@
 <div class="container page-container">
-    <div class="authentication--login--page">
-        <form novalidate>
-            Name: <input type="text" ng-model="user.name" /><br />
-            <input type="submit" ng-click="check(user)" value="Save" />
-        </form>
+
+    <div class="authentication--login--page  col-xs-12">
+
+
+        <div class="hello--wrapper">
+            <div class="hello--board row">
+                <div class="col-xs-8"><div class="left-background"></div></div>
+                <div class="col-xs-4"><div class="right-background"></div></div>
+            </div>
+            <div class="hello--text">Hello Mate !</div>
+        </div>
+
+
+        <div class="login--form--wrapper row">
+            <form class="login--form" novalidate>
+                <div class="col-xs-8">
+                    <div class="login--form--input-name">
+                        <input ng-model="user.name" type="text" placeholder="Your Name"/>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="login--form--input-send">
+                        <button type="submit" ng-click="check(user)" class="">
+                            <div class="value">Play <i class="fa fa-arrow-right"></i></div>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

@@ -1,0 +1,124 @@
+.authentication--login--page{
+    position: relative;
+
+    .hello--wrapper{
+        margin: auto;
+        width: 50%;
+        max-height: 450px;
+        border: 2px solid black;
+        @include vh-align(fixed);
+        height: 196px;
+        z-index: 100;
+
+        .hello--board{
+            height: 100%;
+            position: relative;
+            margin: 0;
+
+            .left-background,
+            .right-background{
+                height: 100%;
+                position: absolute;
+                width: 100%;
+            }
+
+            .col-xs-8,
+            .col-xs-4{
+                padding: 0;
+                height: 100%;
+                overflow: hidden
+            }
+
+            .left-background{
+                background-color: $hello_left_background;
+                background-image: url(../img/polkadot.png);
+                background-repeat: repeat;
+                // left: -100%;
+                border-right: 1px solid black;
+            }
+
+            .right-background{
+                background-color: $hello_right_background;
+                background-image: url(../img/line.png);
+                background-repeat: repeat;
+                // right: -100%;
+                border-left: 1px solid black;
+            }
+        }
+
+        .hello--text{
+            background: #fff;
+            @include vh-align(absolute);
+            width: 70%;
+            border: 2px solid black;
+            text-align: center;
+            padding: 27px;
+            text-transform: uppercase;
+            font-size: 30px;
+            letter-spacing: 10px;
+        }
+    }
+
+    .login--form--wrapper{
+        margin: auto;
+        width: 50%;
+        max-height: 450px;
+        border: 2px solid black;
+        @include vh-align(fixed);
+        top: 70%;
+
+        .col-xs-8,
+        .col-xs-4{
+            padding: 0;
+            height: 40px;
+        }
+
+        .login--form{
+            margin: 0;
+
+            .login--form--input-name,
+            .login--form--input-send{
+
+                input, button{
+                    width: 100%;
+                    background: none;
+                    border: 0;
+                    height: 40px;
+                    outline: none;
+                }
+            }
+
+            .login--form--input-name{
+                border-right: 2px solid black;
+
+                input{
+                    background-color: white;
+                    padding: 20px;
+                    text-transform: uppercase;
+                    letter-spacing: 10px;
+                }
+            }
+
+            .login--form--input-send{
+                input, button{
+                    background-color: $button_background;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    position: relative;
+                    overflow: hidden;
+
+                    .value{
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -10px;
+                        left: 50%;
+                        margin-left: -26px;
+                        width: 52px;
+                    }
+                }
+            }
+        }
+
+    }
+
+}
