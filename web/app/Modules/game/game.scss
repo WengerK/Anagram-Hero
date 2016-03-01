@@ -104,14 +104,9 @@
         }
 
         .timeout-text{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            /* height: 100px; */
             background: #fff;
-            width: 70%;
-            margin-left: -35%;
-            margin-top: -50px;
+            @include vh-align(absolute);
+            width: 80%;
             border: 2px solid black;
             text-align: center;
             padding: 27px;
