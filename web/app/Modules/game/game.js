@@ -19,6 +19,7 @@ var game = angular.module('anagram_hero.game', [
     $scope.user = AuthService.getUser();
     $scope.game_words = AnagramService.words;
     $scope.game_score = 0;
+    $scope.default_timer_counter = 40;
 
     $scope.guess = '';
     $scope.round = {};
@@ -69,8 +70,11 @@ var game = angular.module('anagram_hero.game', [
                 // Save the origin of this point for moving it to the dest point later
                 var origin = $(div).offset();
 
-                $(div).transition({ scale: 1.3, opacity: 1, delay: key * 250 }, 200).delay(450).transition({ opacity: 0, x: dest.left - origin.left, y: dest.top - origin.top}, 500, 'cubic-bezier(.47,.2,.31,.54)', function(){
-                    $('.game--board--score .score').transition({ scale: 1.3 }, 100).transition({ scale: 1 }, 100);
+                $(div).transition({ scale: 1.3, opacity: 1, delay: key * 250 }, 200).delay(550).transition({ opacity: 0, x: dest.left - origin.left, y: dest.top - origin.top}, 500, 'cubic-bezier(.47,.2,.31,.54)', function(){
+                    // $scope.game_score += round_score_part;
+                    $('.game--board--score .score').transition({ scale: 1.3 }, 50, function(){
+                        $scope.game_score += round_score_part;
+                    }).transition({ scale: 1 }, 50);
                     // Remove element when animation is finished
                     this.remove()
                 });
