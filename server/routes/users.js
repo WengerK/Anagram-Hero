@@ -59,7 +59,7 @@ router.put('/highscore/:name', function(req, res, next) {
                 res.json(put);
             });
         }else{
-            res.json({'ok':0});
+            res.json({'ok':'0'});
         }
     });
 });

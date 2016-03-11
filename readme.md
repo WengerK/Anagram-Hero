@@ -32,6 +32,11 @@ npm install
 mongod
 ```
 
+You maybe will need to set the data path as following
+```shell
+mongod --dbpath /Applications/MAMP/db/mongodb/data/
+```
+
 ### Seed the database
 Run the app's seeder with the following command:
 
@@ -61,7 +66,7 @@ Run the app with the following command:
 supervisor app.js  
 ```
 
-### Test API
+### Test API - Curl
 
 ```shell
 # get list all accounts
@@ -93,8 +98,23 @@ bower install
 ### Generate SASS Files via GulpJS
 
 1. Installing GulpJS
-```sh
+```shell
 npm install gulp --save-dev
 npm install gulp-sass --save-dev
 gulp sass
+```
+
+## Continuous Integration Tests
+
+### Installing mocha
+
+```shell
+npm install -g mocha
+```
+
+### Server tests using mocha
+
+By default mocha will run everything in /test
+```shell
+mocha server/test
 ```
