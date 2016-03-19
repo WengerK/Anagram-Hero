@@ -2,7 +2,8 @@
 
 The goal is to implement a small word puzzle game that presents the user with a mangled word and asks her to enter the correct, unmangled word. If the word to unmangle is pizza the application may present the word as zpaiz and the user must then enter P I Z Z A in this order for the solution to be accepted.
 
-![alt tag](https://cloud.githubusercontent.com/assets/1841592/13899619/06625fec-edf3-11e5-8202-32c5f2c3049e.gif)
+Anagram Hero in action - Caution, the following gif is 10 frames per seconds, the real UX is little bit different.
+![alt Anagram Hero in action](https://cloud.githubusercontent.com/assets/1841592/13899619/06625fec-edf3-11e5-8202-32c5f2c3049e.gif)
 
 ## Install env
 
