@@ -13,13 +13,16 @@ Bower
 ## Starting Server Side
 
 The Server will provide :
-    List of possible words
-        The list of words contains - The real word, the Anagram, the best score possible for this words
 
-    List of last games and hightscore
+- List of possible words:
 
-    Authentication (whitout password) - using username
-        To save hightscores and list them
+    The list of words contains - The real word, the Anagram, the best score possible for this words
+
+- List of last games and highscore
+
+- Authentication (whitout password) - using username
+
+    To save highscores and list them
 
 ### Install dependencies for the server by executing
 ```shell
@@ -73,7 +76,10 @@ supervisor app.js
 curl localhost:3000/users/list
 
 # add account into db
-curl --data "name=sudei" http://localhost:3000/users
+curl -X POST --data "name=sudei" http://localhost:3000/users
+
+# delete account into db
+curl -X DELETE --data "name=sudei" http://localhost:3000/users
 
 # get or add account into db
 curl localhost:3000/users/sudei
