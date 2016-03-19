@@ -10,11 +10,15 @@ describe('Routing', function() {
             .expect('Content-Type', /json/)
             .expect(200) //Status code
             .end(function(err, res) {
+                res.body.should.be.an.instanceOf(Array);
+                for (var i=0; i < res.body.length; i++){
+                    res.body[i].should.have.property('_id');
+                    res.body[i].should.have.property('name');
+                    res.body[i].should.have.property('highscore');
+                }
                 if (err) {
                     throw err;
                 }
-                // this is should.js syntax, very clear
-                //res.should.have.status(400);
                 done();
             });
         });
@@ -25,11 +29,13 @@ describe('Routing', function() {
             .expect('Content-Type', /json/)
             .expect(200) //Status code
             .end(function(err, res) {
+                res.body.should.have.property('name');
+                res.body.should.have.property('highscore');
+                res.body.should.have.property('shuffle');
+
                 if (err) {
                     throw err;
                 }
-                // this is should.js syntax, very clear
-                //res.should.have.status(400);
                 done();
             });
         });

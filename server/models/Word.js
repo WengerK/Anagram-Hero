@@ -3,7 +3,7 @@ var random   = require('mongoose-simple-random');
 
 var WordSchema = new mongoose.Schema({
     name       : String,
-    highscore  : String,
+    highscore  : { type: Number, min: 0, default: 0 },
     updated_at : { type: Date, default: Date.now },
 });
 WordSchema.plugin(random);

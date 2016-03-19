@@ -40,27 +40,41 @@ router.get('/:name', function(req, res, next) {
 
 /* POST /users */
 router.post('/', function(req, res, next) {
-    // @TODO Check user already exist
-    User.create({'name': req.body.name}, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
+    if (typeof req.body.name === 'undefined') return res.status(500).send({message: 'Missing parameters', errors:{'name': 'name is required'}});
+
+    User.create({'name': req.body.name}, function (err, user) {
+        if (err) return res.status(500).send({message: 'Failed to create profile.', errors: err});
+        res.json({message: 'profile created'});
+    });
+});
+
+/* DELETE /users */
+router.delete('/', function(req, res) {
+    if (typeof req.body.name === 'undefined') return res.status(500).send({message: 'Missing parameters', errors:{'name': 'name is required'}});
+
+    User.remove({'name': req.body.name}, function (err, user) {
+        if (err) return res.status(500).send({message: 'Failed to delete profile.', errors: err});
+        res.json({message: 'profile deleted'});
     });
 });
 
 /* PUT /users/highscore/:name */
 router.put('/highscore/:name', function(req, res, next) {
-    User.findOne({ 'name': req.params.name }, function (err, user) {
-        if (err) return next(err);
+    if (typeof req.body.highscore === 'undefined') return res.status(500).send({message: 'Missing parameters', errors:{'highscore': 'highscore is required'}});
 
-        if( user !== null && req.body.highscore > user.highscore ){
-            // If the user exist, check it's a new highscore and save it
-            User.update({ 'name': req.params.name }, {'highscore': req.body.highscore}, function (err, put) {
-                if (err) return next(err);
-                res.json(put);
-            });
-        }else{
-            res.json({'ok':'0'});
-        }
+    User.findOne({ 'name': req.params.name }, function (err, user) {
+        if (err) return res.status(500).send({message: 'Unattended error', errors: err});
+
+        if (user === null) return res.status(500).send({message: 'User not found', errors: user});
+
+        var highscore = req.body.highscore;
+
+        // If the user exist, check it's a new highscore and save it
+        User.update({ 'name': req.params.name }, {'highscore': highscore}, { runValidators: true }, function (err, put) {
+            if (err) return res.status(500).send({message: 'Failed to save highscore.', errors: err});
+            res.json(put);
+        });
+
     });
 });
 
