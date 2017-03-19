@@ -1,0 +1,345 @@
+/*- BACKGROUNDS COLORS -*/
+/*- LOGIN COLORS -*/
+/*- GAME BOARD COLORS -*/
+/*- TIMEOUT -*/
+/*- GAME SCORE COLORS -*/
+/* Mixin */
+/* Mixin */
+@keyframes blink-animation {
+  to {
+    visibility: hidden; } }
+
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden; } }
+
+@keyframes shake {
+  0%, 100% {
+    transform: translate(-50%, -50%); }
+  20%, 60% {
+    transform: translate(-45%, -50%); }
+  40%, 80% {
+    transform: translate(-55%, -50%); } }
+
+@font-face {
+  font-family: "Roboto-Black";
+  src: url("../fonts/Roboto-Black.eot?") format("eot"), url("../fonts/Roboto-Black.woff2") format("woff2"), url("../fonts/Roboto-Black.woff") format("woff"), url("../fonts/Roboto-Black.ttf") format("truetype"), url("../fonts/Roboto-Black.svg#Roboto-Black") format("svg"); }
+
+.authentication--login--page {
+  position: relative; }
+  .authentication--login--page .hello--wrapper {
+    margin: auto;
+    width: 50%;
+    max-height: 450px;
+    border: 2px solid black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    height: 196px;
+    z-index: 100; }
+    .authentication--login--page .hello--wrapper .hello--board {
+      height: 100%;
+      position: relative;
+      margin: 0; }
+      .authentication--login--page .hello--wrapper .hello--board .left-background,
+      .authentication--login--page .hello--wrapper .hello--board .right-background {
+        height: 100%;
+        position: absolute;
+        width: 100%; }
+      .authentication--login--page .hello--wrapper .hello--board .col-xs-8,
+      .authentication--login--page .hello--wrapper .hello--board .col-xs-4 {
+        padding: 0;
+        height: 100%;
+        overflow: hidden; }
+      .authentication--login--page .hello--wrapper .hello--board .left-background {
+        background-color: #f7b7d2;
+        background-image: url(../img/polkadot.png);
+        background-repeat: repeat;
+        border-right: 1px solid black; }
+      .authentication--login--page .hello--wrapper .hello--board .right-background {
+        background-color: #a783b3;
+        background-image: url(../img/line.png);
+        background-repeat: repeat;
+        border-left: 1px solid black; }
+    .authentication--login--page .hello--wrapper .hello--text {
+      background: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 80%;
+      border: 2px solid black;
+      text-align: center;
+      padding: 27px;
+      text-transform: uppercase;
+      font-size: 30px;
+      letter-spacing: 10px; }
+  .authentication--login--page .login--form--wrapper {
+    margin: auto;
+    width: 50%;
+    max-height: 450px;
+    border: 2px solid black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    top: 70%; }
+    .authentication--login--page .login--form--wrapper.shake {
+      animation: shake 0.3s;
+      -webkit-animation: shake 0.3s; }
+    .authentication--login--page .login--form--wrapper .col-xs-8,
+    .authentication--login--page .login--form--wrapper .col-xs-4 {
+      padding: 0;
+      height: 40px; }
+    .authentication--login--page .login--form--wrapper .login--form {
+      margin: 0; }
+      .authentication--login--page .login--form--wrapper .login--form .login--form--input-name input, .authentication--login--page .login--form--wrapper .login--form .login--form--input-name button,
+      .authentication--login--page .login--form--wrapper .login--form .login--form--input-send input,
+      .authentication--login--page .login--form--wrapper .login--form .login--form--input-send button {
+        width: 100%;
+        background: none;
+        border: 0;
+        height: 40px;
+        outline: none; }
+      .authentication--login--page .login--form--wrapper .login--form .login--form--input-name {
+        border-right: 2px solid black; }
+        .authentication--login--page .login--form--wrapper .login--form .login--form--input-name input {
+          background-color: white;
+          padding: 20px;
+          text-transform: uppercase;
+          letter-spacing: 10px; }
+      .authentication--login--page .login--form--wrapper .login--form .login--form--input-send input, .authentication--login--page .login--form--wrapper .login--form .login--form--input-send button {
+        background-color: #FDF69E;
+        font-size: 14px;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden; }
+        .authentication--login--page .login--form--wrapper .login--form .login--form--input-send input .value, .authentication--login--page .login--form--wrapper .login--form .login--form--input-send button .value {
+          position: absolute;
+          top: 50%;
+          margin-top: -10px;
+          left: 50%;
+          margin-left: -26px;
+          width: 52px; }
+
+.game--page {
+  position: relative; }
+  .game--page .game--round-score {
+    top: 30%;
+    position: fixed;
+    /* height: 20px; */
+    left: 25%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #FDF69E;
+    border: 2px solid black; }
+  .game--page .game--round-lose-points .lose-point {
+    top: 30%;
+    position: fixed;
+    /* height: 20px; */
+    left: 31%;
+    color: #a783b3;
+    padding: 5px 7px;
+    border-radius: 15px;
+    background-color: white;
+    font-size: 10px;
+    border: 2px solid black; }
+  .game--page .game--round-win-points {
+    top: 38%;
+    left: 26%;
+    position: fixed;
+    width: 32%;
+    height: 30px;
+    z-index: 5; }
+    .game--page .game--round-win-points .win-point {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 1;
+      color: #aadbd5;
+      padding: 5px 7px;
+      border-radius: 15px;
+      background-color: white;
+      font-size: 10px;
+      border: 2px solid black; }
+  .game--page .game--game-words {
+    top: 30%;
+    position: fixed;
+    /* height: 20px; */
+    right: 25%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #aadbd5;
+    border: 2px solid black; }
+  .game--page .timeout--wrapper {
+    margin: auto;
+    width: 50%;
+    max-height: 450px;
+    border: 2px solid black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    height: 196px;
+    z-index: 100;
+    display: none; }
+    .game--page .timeout--wrapper .timeout--board {
+      height: 100%;
+      position: relative;
+      margin: 0; }
+      .game--page .timeout--wrapper .timeout--board .left-background,
+      .game--page .timeout--wrapper .timeout--board .right-background {
+        height: 100%;
+        position: absolute;
+        width: 100%; }
+      .game--page .timeout--wrapper .timeout--board .col-xs-8,
+      .game--page .timeout--wrapper .timeout--board .col-xs-4 {
+        padding: 0;
+        height: 100%;
+        overflow: hidden; }
+      .game--page .timeout--wrapper .timeout--board .left-background {
+        background-color: #FDF69E;
+        background-image: url(../img/triangle.png);
+        background-repeat: repeat;
+        left: -100%;
+        border-right: 1px solid black; }
+      .game--page .timeout--wrapper .timeout--board .right-background {
+        background-color: #f7b7d2;
+        background-image: url(../img/line.png);
+        background-repeat: repeat;
+        right: -100%;
+        border-left: 1px solid black; }
+    .game--page .timeout--wrapper .timeout-text {
+      background: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 80%;
+      border: 2px solid black;
+      text-align: center;
+      padding: 27px;
+      text-transform: uppercase;
+      font-size: 30px;
+      letter-spacing: 10px;
+      opacity: 0; }
+  .game--page .controls--wrapper {
+    margin: auto;
+    width: 50%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    top: 70%;
+    z-index: 100;
+    text-align: center;
+    display: none; }
+    .game--page .controls--wrapper .controls--control {
+      border: 2px solid black;
+      padding: 15px;
+      text-transform: capitalize;
+      cursor: pointer;
+      display: block;
+      color: black;
+      opacity: 0; }
+      .game--page .controls--wrapper .controls--control:hover {
+        text-decoration: none; }
+      .game--page .controls--wrapper .controls--control.controls--replay {
+        background: #aadbd5; }
+  .game--page .game--wrapper {
+    margin: auto;
+    width: 50%;
+    max-height: 450px;
+    border: 2px solid black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    .game--page .game--wrapper .col-xs-8 {
+      padding: 0; }
+    .game--page .game--wrapper .col-xs-4 {
+      padding: 0; }
+    .game--page .game--wrapper.shake {
+      animation: shake 0.3s;
+      -webkit-animation: shake 0.3s; }
+    .game--page .game--wrapper .game--board {
+      margin: 0; }
+      .game--page .game--wrapper .game--board .inner--shuffled-word {
+        height: 150px;
+        background-color: white;
+        border-right: 2px solid black; }
+        .game--page .game--wrapper .game--board .inner--shuffled-word .game--board--shuffled-word {
+          font-size: 20px;
+          letter-spacing: 10px;
+          text-transform: uppercase;
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+          width: 100%;
+          text-align: center; }
+      .game--page .game--wrapper .game--board .game--board--timer {
+        background-color: #f7b7d2;
+        height: 75px;
+        position: relative;
+        border-bottom: 2px solid black; }
+        .game--page .game--wrapper .game--board .game--board--timer .timer {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+          .game--page .game--wrapper .game--board .game--board--timer .timer .minutes,
+          .game--page .game--wrapper .game--board .game--board--timer .timer .dotes,
+          .game--page .game--wrapper .game--board .game--board--timer .timer .seconds {
+            display: inline-block; }
+          .game--page .game--wrapper .game--board .game--board--timer .timer .dotes {
+            animation: blink-animation 0.5s steps(5, start) infinite;
+            -webkit-animation: blink-animation 0.5s steps(5, start) infinite; }
+      .game--page .game--wrapper .game--board .game--board--score {
+        background-color: white;
+        height: 75px;
+        position: relative; }
+        .game--page .game--wrapper .game--board .game--board--score .score {
+          position: absolute;
+          top: 50%;
+          margin-top: -10px;
+          width: 100%;
+          text-align: center; }
+    .game--page .game--wrapper .game--form {
+      margin: 0; }
+      .game--page .game--wrapper .game--form .game--form--input-word,
+      .game--page .game--wrapper .game--form .game--form--input-send {
+        border-top: 2px solid black; }
+        .game--page .game--wrapper .game--form .game--form--input-word input,
+        .game--page .game--wrapper .game--form .game--form--input-send input {
+          width: 100%;
+          background: none;
+          border: 0;
+          height: 40px;
+          outline: none; }
+      .game--page .game--wrapper .game--form .game--form--input-word {
+        border-right: 2px solid black; }
+        .game--page .game--wrapper .game--form .game--form--input-word input {
+          background-color: white;
+          padding: 20px;
+          text-transform: uppercase;
+          letter-spacing: 10px; }
+      .game--page .game--wrapper .game--form .game--form--input-send input {
+        background-color: #a783b3;
+        font-size: 14px;
+        text-transform: uppercase; }
+
+html,
+body {
+  font-family: 'Roboto-Black';
+  background-color: #a0c6d9; }

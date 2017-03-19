@@ -1,0 +1,31 @@
+$light-blue: #a0c6d9;
+$rose: #f7b7d2;
+$violet: #a783b3;
+$turquoise: #aadbd5;
+$yellow: #FDF69E;
+$red: red;
+$green: green;
+
+/*- BACKGROUNDS COLORS -*/
+$primary_background: $light-blue;
+
+/*- LOGIN COLORS -*/
+$hello_left_background: $rose;
+$hello_right_background: $violet;
+$login_button_background: $yellow;
+
+/*- GAME BOARD COLORS -*/
+$shuffled_word_background: white;
+$timer_background: $rose;
+$score_background: white;
+$button_background: $violet;
+$round_score_background: $yellow;
+$game_words_background: $turquoise;
+
+/*- TIMEOUT -*/
+$timeout_right_background: $rose;
+$timeout_left_background: $yellow;
+
+/*- GAME SCORE COLORS -*/
+$game_lose_point: $violet;
+$game_win_point: $turquoise;

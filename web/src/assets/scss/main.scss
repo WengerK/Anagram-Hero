@@ -1,0 +1,12 @@
+@import 'variables.scss';
+@import 'fonts.scss';
+
+@import './mixins/_align.scss';
+@import './mixins/_animations.scss';
+
+html,
+body {
+    font-family: $font-primary;
+    background-color: $primary_background;
+    font-weight: $font-primary-weight;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title ng-bind="title">Anagram Hero</title>
+    <meta name="description" content="">
+    <base href="/">
+    <meta charset="UTF-8">
+
+    <!-- FACEBOOK -->
+    <meta property="og:title" content="Anagram Hero"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="http://localhost/assets/img/seo/facebook.jpg"/>
+    <meta property="og:url" content="http://localhost"/>
+    <meta property="og:description" content=""/>
+
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="http://localhost">
+    <meta name="twitter:creator" content="@WengerK">
+    <meta name="twitter:title" content="Anagram Hero">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image:src" content="http://localhost/assets/img/seo/twitter.jpg">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('main.js').catch(function(err){ console.error(err); });
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:700,900" rel="stylesheet">
+  </head>
+
+  <body>
+    <my-app>Loading AppComponent content here ...</my-app>
+  </body>
+</html>
